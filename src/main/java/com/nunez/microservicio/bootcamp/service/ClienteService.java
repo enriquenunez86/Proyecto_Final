@@ -5,7 +5,6 @@ import com.nunez.microservicio.bootcamp.domain.Cliente;
 import java.util.List;
 import java.util.Optional;
 
-// Interfaz del servicio
 public interface ClienteService {
     List<Cliente> findAll();
     Optional<Cliente> findById(Long id);

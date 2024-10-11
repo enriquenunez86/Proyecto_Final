@@ -49,9 +49,9 @@ public class CuentaController {
         Optional<Cuenta> optionalCuenta = cuentaSaldoService.depositar(id, monto);
 
         if (optionalCuenta.isPresent()) {
-            return ResponseEntity.ok(optionalCuenta.get()); // Retorna Cuenta si se encuentra
+            return ResponseEntity.ok(optionalCuenta.get());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cuenta no encontrada"); // Retorna el mensaje de error
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cuenta no encontrada");
         }
     }
 
@@ -60,9 +60,9 @@ public class CuentaController {
         Optional<Cuenta> optionalCuenta = cuentaSaldoService.retirar(id, monto);
 
         if (optionalCuenta.isPresent()) {
-            return ResponseEntity.ok(optionalCuenta.get()); // Retorna Cuenta si se encuentra
+            return ResponseEntity.ok(optionalCuenta.get());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cuenta no encontrada o saldo insuficiente"); // Retorna el mensaje de error
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cuenta no encontrada o saldo insuficiente");
         }
     }
 

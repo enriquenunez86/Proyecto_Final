@@ -34,7 +34,6 @@ public class TransaccionController {
             cuenta.setSaldo(cuenta.getSaldo() + transaccion.getMonto());
             cuentaService.updateCuenta(cuenta);
 
-            // Registrar la transacción
             transaccion.setTipo("Depósito");
             Transaccion resultado = transaccionService.registrarTransaccion(transaccion);
             return new ResponseEntity<>(resultado, HttpStatus.CREATED);
@@ -55,7 +54,6 @@ public class TransaccionController {
         cuenta.setSaldo(cuenta.getSaldo() - transaccion.getMonto());
         cuentaService.updateCuenta(cuenta);
 
-        // Registrar la transacción
         transaccion.setTipo("Retiro");
         Transaccion resultado = transaccionService.registrarTransaccion(transaccion);
         return new ResponseEntity<>(resultado, HttpStatus.CREATED);

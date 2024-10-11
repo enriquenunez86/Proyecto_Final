@@ -2,7 +2,6 @@ package com.nunez.microservicio.bootcamp.service;
 
 import org.springframework.stereotype.Service;
 
-// Clase Validador de Saldo, que sigue SRP
 @Service
 public class ValidadorSaldo {
 

@@ -39,7 +39,4 @@ public class Cliente {
 	public boolean isPresent() {
         return false;
     }
-
-	// Getters y setters
-	// ...
 }

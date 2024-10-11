@@ -49,10 +49,10 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     private void validateCliente(Cliente cliente) {
-        // Lógica adicional de validación si es necesario
+
         if (cliente.getDni() == null || cliente.getDni().isEmpty()) {
             throw new IllegalArgumentException("DNI no puede ser nulo o vacío");
         }
-        // Otras validaciones pueden ir aquí
+
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-// Implementación del servicio
 @Service
 public class TransaccionServiceImpl implements TransaccionService {
 

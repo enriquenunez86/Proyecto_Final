@@ -26,6 +26,4 @@ public class Cuenta {
     
     private Long clienteId;
 
-    // Getters y setters
-    // ...
 }

@@ -18,13 +18,13 @@ class TransaccionTest {
         String cuentaDestino = null; // No aplica
         Double saldoDisponible = 5000.0;
 
-        // Crear la transacción usando el método de fábrica
+        // Crear la transacción
         Transaccion transaccion = Transaccion.create(tipo, monto, fecha, cuentaOrigen, cuentaDestino, saldoDisponible);
 
         // Verificar que la transacción se ha creado correctamente
         assertEquals(tipo, transaccion.getTipo());
         assertEquals(monto, transaccion.getMonto());
-        assertEquals(fecha.toLocalDate(), transaccion.getFecha().toLocalDate()); // Solo comparando la fecha
+        assertEquals(fecha.toLocalDate(), transaccion.getFecha().toLocalDate());
         assertEquals(cuentaOrigen, transaccion.getCuentaOrigen());
         assertEquals(cuentaDestino, transaccion.getCuentaDestino());
         assertEquals(saldoDisponible, transaccion.getSaldoDisponible());

@@ -31,7 +31,6 @@ public class CuentaServiceImplTest {
         cuenta = new Cuenta();
         cuenta.setId(1L);
         cuenta.setNumeroCuenta("1234567890");
-        // Configura otros atributos de Cuenta según sea necesario
     }
 
     @Test
