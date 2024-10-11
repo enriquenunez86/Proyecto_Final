@@ -17,7 +17,7 @@ public class ValidacionTransaccionService {
 //            return HttpStatus.BAD_REQUEST;
 //        }
 //        return HttpStatus.CREATED; // Se puede continuar con el proceso
-        return transaccion.getMonto() <= 0;
+        return transaccion.getMonto() > 0;
     }
 
     public HttpStatus validarRetiro(Transaccion transaccion) {
