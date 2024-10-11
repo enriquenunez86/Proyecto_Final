@@ -28,20 +28,19 @@ public class TransaccionController {
 
     @PostMapping("/deposito")
     public ResponseEntity<Object> registrarDeposito(@RequestBody Transaccion transaccion) {
-        HttpStatus status = validacionTransaccionService.validarDeposito(transaccion);
-        if (status != HttpStatus.CREATED) {
-            return new ResponseEntity<>(validacionTransaccionService.getMensajeError(), status);
+        if (validacionTransaccionService.validarDeposito(transaccion)){
+            // Obtener la cuenta y actualizar el saldo
+            Cuenta cuenta = cuentaService.buscarPorNumeroCuenta(transaccion.getCuentaOrigen()).get();
+            cuenta.setSaldo(cuenta.getSaldo() + transaccion.getMonto());
+            cuentaService.updateCuenta(cuenta);
+
+            // Registrar la transacción
+            transaccion.setTipo("Depósito");
+            Transaccion resultado = transaccionService.registrarTransaccion(transaccion);
+            return new ResponseEntity<>(resultado, HttpStatus.CREATED);
+        }else{
+            return ResponseEntity.badRequest().body("La cuenta no existe");
         }
-
-        // Obtener la cuenta y actualizar el saldo
-        Cuenta cuenta = cuentaService.buscarPorNumeroCuenta(transaccion.getCuentaOrigen()).get();
-        cuenta.setSaldo(cuenta.getSaldo() + transaccion.getMonto());
-        cuentaService.updateCuenta(cuenta);
-
-        // Registrar la transacción
-        transaccion.setTipo("Depósito");
-        Transaccion resultado = transaccionService.registrarTransaccion(transaccion);
-        return new ResponseEntity<>(resultado, HttpStatus.CREATED);
     }
 
     @PostMapping("/retiro")

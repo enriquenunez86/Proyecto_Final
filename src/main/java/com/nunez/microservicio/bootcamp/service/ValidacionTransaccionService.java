@@ -11,12 +11,13 @@ public class ValidacionTransaccionService {
 
     private String mensajeError;
 
-    public HttpStatus validarDeposito(Transaccion transaccion) {
-        if (transaccion.getMonto() <= 0) {
-            mensajeError = "El monto debe ser mayor a cero";
-            return HttpStatus.BAD_REQUEST;
-        }
-        return HttpStatus.CREATED; // Se puede continuar con el proceso
+    public boolean validarDeposito(Transaccion transaccion) {
+//        if (transaccion.getMonto() <= 0) {
+//            mensajeError = "El monto debe ser mayor a cero";
+//            return HttpStatus.BAD_REQUEST;
+//        }
+//        return HttpStatus.CREATED; // Se puede continuar con el proceso
+        return transaccion.getMonto() <= 0;
     }
 
     public HttpStatus validarRetiro(Transaccion transaccion) {

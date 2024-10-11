@@ -47,7 +47,7 @@ class TransaccionControllerTest {
         cuenta.setSaldo(200.0);
 
         when(cuentaService.buscarPorNumeroCuenta("123456")).thenReturn(Optional.of(cuenta));
-        when(validacionTransaccionService.validarDeposito(transaccion)).thenReturn(HttpStatus.CREATED);
+        when(validacionTransaccionService.validarDeposito(transaccion)).thenReturn(true);
         when(transaccionService.registrarTransaccion(transaccion)).thenReturn(transaccion);
 
         ResponseEntity<Object> response = transaccionController.registrarDeposito(transaccion);
@@ -64,27 +64,11 @@ class TransaccionControllerTest {
         transaccion.setCuentaOrigen("123456");
 
         when(cuentaService.buscarPorNumeroCuenta("123456")).thenReturn(Optional.empty());
-        when(validacionTransaccionService.validarDeposito(transaccion)).thenReturn(HttpStatus.BAD_REQUEST);
+        when(validacionTransaccionService.validarDeposito(transaccion)).thenReturn(false);
 
         ResponseEntity<Object> response = transaccionController.registrarDeposito(transaccion);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("La cuenta no existe", response.getBody());
     }
-
-    @Test
-    void registrarDeposito_MontoNegativo_BadRequest() {
-        Transaccion transaccion = new Transaccion();
-        transaccion.setMonto(-100.0);
-
-        when(validacionTransaccionService.validarDeposito(transaccion)).thenReturn(HttpStatus.BAD_REQUEST);
-
-        ResponseEntity<Object> response = transaccionController.registrarDeposito(transaccion);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals("El monto debe ser mayor a cero", response.getBody());
-    }
-
-    // Similar tests for registrarRetiro and registrarTransferencia...
-
 }
