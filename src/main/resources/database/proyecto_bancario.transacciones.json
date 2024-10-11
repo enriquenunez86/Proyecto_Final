@@ -1,0 +1,38 @@
+[{
+  "_id": {
+    "$numberLong": "1"
+  },
+  "tipo": "Transferencia",
+  "monto": 30,
+  "fecha": {
+    "$date": "2024-10-10T19:01:11.300Z"
+  },
+  "cuentaOrigen": "1234567890",
+  "cuentaDestino": "1357924680",
+  "_class": "com.nunez.microservicio.bootcamp.domain.Transaccion"
+},
+{
+  "_id": {
+    "$numberLong": "2"
+  },
+  "tipo": "Retiro",
+  "monto": 85,
+  "fecha": {
+    "$date": "2024-10-07T22:42:05.211Z"
+  },
+  "cuentaOrigen": "1357924680",
+  "_class": "com.nunez.microservicio.bootcamp.domain.Transaccion"
+},
+{
+  "_id": {
+    "$numberLong": "3"
+  },
+  "tipo": "Transferencia",
+  "monto": 70,
+  "fecha": {
+    "$date": "2024-10-07T22:44:29.841Z"
+  },
+  "cuentaOrigen": "1357924680",
+  "cuentaDestino": "1234567890",
+  "_class": "com.nunez.microservicio.bootcamp.domain.Transaccion"
+}]
